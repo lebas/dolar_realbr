@@ -22,6 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
+<<<<<<< HEAD
 
 | NAME               | CURRENCY           | TYPE |
 |--------------------|--------------------|------|
