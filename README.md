@@ -23,31 +23,28 @@ Or install it yourself as:
 ## Usage
 
 
-
-NAME 									CURRENCY						TYPE
------------------------------------------------
-Dolar									dolar 							sale
-Dolar									dolar 							buy
-Euro									euro 								sale
-Euro									euro								buy
-Yen										yen 								sale 
-Yen										yen 								buy
-Pound Sterling				pound_sterling 			sale 
-Pound Sterling				pound_sterling 			buy
-Swiss Franc						swiss_franc					sale
-Swiss Franc						swiss_franc 				buy
-Danish Krone					danish_krone 				sale
-Danish Krone					danish_krone 				buy
-Norwegian Krone				norwegian_krone 		sale
-Norwegian	Krone				norwegian_krone 		buy
-Swedish Krona					swedish_krona 			sale
-Swedish Krona					swedish_krona 			buy
-Australian Dollar			australian_dollar		sale
-Australian Dollar			australian_dollar 	buy
-Canadian Dollar				canadian_dollar 		sale
-Canadian Dollar				canadian_dollar 		buy
------------------------------------------------
-
+| NAME               | CURRENCY           | TYPE |
+|--------------------|--------------------|------|
+| Dollar             | dollar             |	sale |
+| Dollar             | dollar 			      |	buy  |
+| Euro				       | euro 			        |	sale |
+| Euro				       | euro				        |	buy  |
+| Yen				         | yen 				        |	sale | 
+| Yen			           | yen 				        |	buy  |
+| Pound Sterling	   | pound_sterling 	  | sale | 
+| Pound Sterling     | pound_sterling 	  | buy  |
+| Swiss Franc		     | swiss_franc		    |	sale |
+| Swiss Franc		     | swiss_franc 		    |	buy  |
+| Danish Krone		   | danish_krone 	    |	sale |
+| Danish Krone		   | danish_krone 	    |	buy  |
+| Norwegian Krone	   | norwegian_krone 	  |	sale |
+| Norwegian	Krone	   | norwegian_krone 	  |	buy  |
+| Swedish Krona		   | swedish_krona 	    |	sale |
+| Swedish Krona		   | swedish_krona 	    |	buy  |
+| Australian Dollar	 | australian_dollar  |	sale |
+| Australian Dollar	 | australian_dollar  |	buy  |
+| Canadian Dollar	   | canadian_dollar    |	sale |
+| Canadian Dollar	   | canadian_dollar 	  |	buy  |
 
 ## Development
 
