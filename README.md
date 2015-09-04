@@ -16,13 +16,10 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
 
-    $ gem install dolar_realbr
 
 ## Usage
 
-<<<<<<< HEAD
 
 | NAME               | CURRENCY           | TYPE |
 |--------------------|--------------------|------|
@@ -46,6 +43,43 @@ Or install it yourself as:
 | Australian Dollar	 | australian_dollar  |	buy  |
 | Canadian Dollar	   | canadian_dollar    |	sale |
 | Canadian Dollar	   | canadian_dollar 	  |	buy  |
+
+
+```ruby
+	require 'dolar_realbr'
+
+	dol = DolarRealbr::Convert.new
+```
+
+cotacao sem data 
+
+```ruby
+
+```
+
+cotacao com data
+
+
+```ruby
+
+```
+
+conversao de valores sem data
+
+
+```ruby
+	dol.convert_currency2realBR({:value => 100, :currency => 'dollar', :type => 'buy'})
+	dol.get_value // get value 
+	dol.get_date  // get date
+```
+
+conversao de valores com data
+
+```ruby
+	dol.convert_currency2realBR({:value => 100, :currency => 'dollar', :type => 'buy', :date => '10/08/2015'})
+	dol.get_value // get value
+	dol.get_date  // get date
+```
 
 ## Development
 

@@ -1,6 +1,6 @@
 require "dolar_realbr/version"
 require "savon"
-require "brazilian-rails"
+require "date"
 
 module DolarRealbr
   class Convert
@@ -11,6 +11,17 @@ module DolarRealbr
   		@value = @day = @name = @code = @unit = nil
   		@cli = Savon.client(wsdl: @url_service)
   	end
+
+    def check_date(day = nil)
+      unless day.nil?
+        dt =  
+        while dt.sunday? or dt.saturday?
+          dt =  dt.prev_day
+        end
+        day = "#{dt.day}/#{dt.month}/#{dt.year}"
+      end 
+      day
+    end
 
   	# params {:currency =>  'dollar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def value_currency2realBR(params)
@@ -29,11 +40,9 @@ module DolarRealbr
 		 				@value = xml_file.css('valor').text.gsub(',','.').to_f
 	 				end
   			else
-  				op = @cli.call(:get_valor, message: {'in0' => @code, 'in1' => params[:date]})
-  				if op.class == Savon::Response
-  					@day = params[:date]
-  					@value = op.body.to_h[:multi_ref]
-  				end
+          day = self.check_date(params[:date])
+  				op = @cli.call(:get_valor, message: {'in0' => @code, 'in1' => day})
+  				@value = op.body.to_h[:multi_ref] if op.class == Savon::Response
   			end
   		end
   	end
