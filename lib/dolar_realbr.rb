@@ -32,7 +32,7 @@ module DolarRealbr
   		puts "#{params[:currency]}"
   		puts @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}")
   		@code = @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}") #if @CC.key?("#{params[:type]}") and @CC["#{params[:type]}"].key?("#{params[:currency]}")
-  		unless @cli.nil? or @code.nil?
+  		if not @cli.nil? and not @code.nil?
   			@value = @day = @name = @code = @unit = nil
   			if params[:date].nil? 
 	  			op = @cli.call(:get_ultimo_valor_xml, message: {'in0' => @code})
