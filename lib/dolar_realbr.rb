@@ -32,6 +32,7 @@ module DolarRealbr
   		puts "#{params[:currency]}"
   		puts @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}")
   		@code = @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}") #if @CC.key?("#{params[:type]}") and @CC["#{params[:type]}"].key?("#{params[:currency]}")
+  		puts @code
   		if not @cli.nil? and not @code.nil?
   			@value = @day = @name = @code = @unit = nil
   			if params[:date].nil? 
