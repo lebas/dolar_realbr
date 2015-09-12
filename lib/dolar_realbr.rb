@@ -18,7 +18,7 @@ module DolarRealbr
         while dt.sunday? or dt.saturday?
           dt =  dt.prev_day
         end
-        day = "#{dt.day}/#{dt.month}/#{dt.year}"
+        day = "#{dt.day.to_s.rjust(2,'0')}/#{dt.month.to_s.rjust(2,'0')}/#{dt.year}"
       end 
       day
     end
@@ -28,7 +28,6 @@ module DolarRealbr
   		@code = CC.fetch("#{params[:type]}").fetch("#{params[:currency]}") if CC.key?("#{params[:type]}") and CC["#{params[:type]}"].key?("#{params[:currency]}")
   		unless @cli.nil? or @code.nil?
   			@value = @day = @name = @code = @unit = nil
-        pry
   			if params[:date].nil? 
 	  			op = @cli.call(:get_ultimo_valor_xml, message: {'in0' => @code})
 	  			op  = op.body.to_h[:get_ultimo_valor_xml_response][:get_ultimo_valor_xml_return]  unless op.body.nil?
@@ -41,6 +40,7 @@ module DolarRealbr
 	 				end
   			else
           day = self.check_date(params[:date])
+          #puts "CODE => #{@code} e DAY => #{day}"
   				op = @cli.call(:get_valor, message: {'in0' => @code, 'in1' => day})
   				@value = op.body.to_h[:multi_ref] if op.class == Savon::Response
   			end
@@ -80,6 +80,5 @@ module DolarRealbr
   	def get_unit_currency
   		return @unit
   	end
-
   end
 end
