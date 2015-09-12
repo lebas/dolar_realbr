@@ -14,7 +14,7 @@ module DolarRealbr
 
     def check_date(day = nil)
       unless day.nil?
-        dt =  
+        dt = DateTime.new(day[6,4], day[3,2], day[0,2])
         while dt.sunday? or dt.saturday?
           dt =  dt.prev_day
         end
