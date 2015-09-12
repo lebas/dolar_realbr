@@ -26,6 +26,8 @@ module DolarRealbr
   	# params {:currency =>  'dollar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def value_currency2realBR(params)
   		puts @CC
+  		puts @CC.key?("#{params[:type]}") 
+  		puts @CC["#{params[:type]}"].key?("#{params[:currency]}")
   		@code = @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}") #if @CC.key?("#{params[:type]}") and @CC["#{params[:type]}"].key?("#{params[:currency]}")
   		unless @cli.nil? or @code.nil?
   			@value = @day = @name = @code = @unit = nil
