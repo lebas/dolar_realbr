@@ -25,16 +25,9 @@ module DolarRealbr
 
   	# params {:currency =>  'dollar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def value_currency2realBR(params)
-  		puts @CC
-  		puts @CC.key?("#{params[:type]}") 
-  		puts @CC["#{params[:type]}"].key?("#{params[:currency]}")
-  		puts "#{params[:type]}"
-  		puts "#{params[:currency]}"
-  		puts @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}")
   		@code = @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}") #if @CC.key?("#{params[:type]}") and @CC["#{params[:type]}"].key?("#{params[:currency]}")
-  		puts @code
-  		if not @cli.nil? and not @code.nil?
-  			@value = @day = @name = @code = @unit = nil
+  		unless @cli.nil? or @code.nil?
+  			@value = @day = @name =  @unit = nil
   			if params[:date].nil? 
 	  			op = @cli.call(:get_ultimo_valor_xml, message: {'in0' => @code})
 	  			op  = op.body.to_h[:get_ultimo_valor_xml_response][:get_ultimo_valor_xml_return]  unless op.body.nil?
