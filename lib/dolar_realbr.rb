@@ -14,7 +14,7 @@ module DolarRealbr
 
     def check_date(day = nil)
       unless day.nil?
-        dt =  
+        dt =  DateTime.new(day[6,4].to_i, day[3,2].to_i, day[0,2].to_i)
         while dt.sunday? or dt.saturday?
           dt =  dt.prev_day
         end
@@ -28,7 +28,7 @@ module DolarRealbr
   		@code = CC.fetch("#{params[:type]}").fetch("#{params[:currency]}") if CC.key?("#{params[:type]}") and CC["#{params[:type]}"].key?("#{params[:currency]}")
   		unless @cli.nil? or @code.nil?
   			@value = @day = @name = @code = @unit = nil
-        binding.pry
+        pry
   			if params[:date].nil? 
 	  			op = @cli.call(:get_ultimo_valor_xml, message: {'in0' => @code})
 	  			op  = op.body.to_h[:get_ultimo_valor_xml_response][:get_ultimo_valor_xml_return]  unless op.body.nil?
