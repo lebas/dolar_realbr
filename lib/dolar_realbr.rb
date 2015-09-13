@@ -25,9 +25,9 @@ module DolarRealbr
 
   	# params {:currency =>  'dollar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def value_currency2realBR(params)
-  		@code = @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}") #if @CC.key?("#{params[:type]}") and @CC["#{params[:type]}"].key?("#{params[:currency]}")
+  		@code = @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}") if @CC.key?("#{params[:type]}") and @CC["#{params[:type]}"].key?("#{params[:currency]}")
   		unless @cli.nil? or @code.nil?
-  			@value = @day = @name = @code = @unit = nil
+  			@value = @day = @name = @unit = nil
   			if params[:date].nil? 
 	  			op = @cli.call(:get_ultimo_valor_xml, message: {'in0' => @code})
 	  			op  = op.body.to_h[:get_ultimo_valor_xml_response][:get_ultimo_valor_xml_return]  unless op.body.nil?
@@ -40,9 +40,8 @@ module DolarRealbr
 	 				end
   			else
           day = self.check_date(params[:date])
-          puts "CODE => #{@code} e DAY => #{day}"
   				op = @cli.call(:get_valor, message: {'in0' => @code, 'in1' => day})
-  				@value = op.body.to_h[:multi_ref] if op.class == Savon::Response
+  				@value = op.body.to_h[:multi_ref].to_f if op.class == Savon::Response
   			end
   		end
   	end
@@ -56,13 +55,13 @@ module DolarRealbr
   	# params {:value => 1.00, :currency =>  'dolar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def convert_currency2realBR(params)
   		self.value_currency2realBR(params)
-  		return @value *= params[:value] unless @value.nil? or params[:value].nil?
+  		return @value *= params[:value].to_f unless @value.nil? or params[:value].nil?
   	end
 
   	# params {:value => 1.00, :currency =>  'dolar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def convert_realBR2currency(params)
   		self.value_currency2realBR(params)
-  		@value = params[:value]/@value unless @value.nil? or params[:value].nil? or @value == 0
+  		@value = params[:value].to_f/@value unless @value.nil? or params[:value].nil? or @value == 0
   	end
 
   	def get_name
