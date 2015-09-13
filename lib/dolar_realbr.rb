@@ -41,7 +41,7 @@ module DolarRealbr
   			else
           day = self.check_date(params[:date])
   				op = @cli.call(:get_valor, message: {'in0' => @code, 'in1' => day})
-  				@value = op.body.to_h[:multi_ref] if op.class == Savon::Response
+  				@value = op.body.to_h[:multi_ref].to_f if op.class == Savon::Response
   				puts @value
   			end
   		end
@@ -56,13 +56,13 @@ module DolarRealbr
   	# params {:value => 1.00, :currency =>  'dolar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def convert_currency2realBR(params)
   		self.value_currency2realBR(params)
-  		return @value *= params[:value].to_i  unless @value.nil? or params[:value].nil?
+  		return @value *= params[:value].to_f  unless @value.nil? or params[:value].nil?
   	end
 
   	# params {:value => 1.00, :currency =>  'dolar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def convert_realBR2currency(params)
   		self.value_currency2realBR(params)
-  		@value = params[:value].to_i/@value unless @value.nil? or params[:value].nil? or @value == 0
+  		@value = params[:value].to_f/@value unless @value.nil? or params[:value].nil? or @value == 0
   	end
 
   	def get_name
