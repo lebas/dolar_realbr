@@ -6,7 +6,7 @@ module DolarRealbr
   class Convert
   	def initialize()
   		@url_service = 'https://www3.bcb.gov.br/sgspub/JSP/sgsgeral/FachadaWSSGS.wsdl'
-      @CC = {'sale' => {'dollar' => 1, 'euro' => 21619, 'yen' => 21621, 'pound_sterling' => 21623, 'swiss_franc' => 21625, 'danish_krone' => 21627, 'norwegian_krone' => 21629, 'swedish_krona' => 21631, 'australian_dollar' => 21633, 'canadian_dollar' => 21635} , 'buy' => {'dollar' => 10813, 'euro' => 21620, 'yen' => 21622, 'pound_sterling' => 21624, 'swiss_franc' => 21626, 'danish_krone' => 21628, 'norwegian_krone' => 21630, 'swedish_krona' => 21632, 'australian_dollar' => 21634, 'canadian_dollar' => 21636} } 
+      @CC = {sale: {dollar: 1, euro: 21619, yen: 21621, pound_sterling: 21623, swiss_franc: 21625, danish_krone: 21627, norwegian_krone: 21629, swedish_krona: 21631, australian_dollar: 21633, canadian_dollar: 21635} , buy: {dollar: 10813, euro: 21620, yen: 21622, pound_sterling: 21624, swiss_franc: 21626, danish_krone: 21628, norwegian_krone: 21630, swedish_krona: 21632, australian_dollar: 21634, canadian_dollar: 21636} } 
   		@CC.default(nil)
   		@value = @day = @name = @code = @unit = nil
   		@cli = Savon.client(wsdl: @url_service)
@@ -46,13 +46,13 @@ module DolarRealbr
 
     def get_last_value_error
       @cli.call(:get_ultimo_valor_xml, message: {'in0' => @code})
-    rescue  IOError
+    rescue  IOError => e
       #erro na conexao
     end
 
     def get_value_error(params)
       @cli.call(:get_valor, message: {'in0' => @code, 'in1' => params})
-    rescue  IOError
+    rescue  IOError => e
       #erro na conexao
     end
 
