@@ -56,13 +56,13 @@ module DolarRealbr
   	# params {:value => 1.00, :currency =>  'dolar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def convert_currency2realBR(params)
   		self.value_currency2realBR(params)
-  		return @value *= params[:value] unless @value.nil? or params[:value].nil?
+  		return @value *= params[:value].to_i  unless @value.nil? or params[:value].nil?
   	end
 
   	# params {:value => 1.00, :currency =>  'dolar', :type =>  'buy', :date => 'DD/MM/YYYY'}
   	def convert_realBR2currency(params)
   		self.value_currency2realBR(params)
-  		@value = params[:value]/@value unless @value.nil? or params[:value].nil? or @value == 0
+  		@value = params[:value].to_i/@value unless @value.nil? or params[:value].nil? or @value == 0
   	end
 
   	def get_name
