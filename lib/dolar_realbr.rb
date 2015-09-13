@@ -40,7 +40,6 @@ module DolarRealbr
 	 				end
   			else
           day = self.check_date(params[:date])
-          puts "CODE => #{@code} e DAY => #{day}"
   				op = @cli.call(:get_valor, message: {'in0' => @code, 'in1' => day})
   				@value = op.body.to_h[:multi_ref] if op.class == Savon::Response
   				puts @value
