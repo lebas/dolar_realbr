@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'dolar_realbr', '0.1.0'
+gem 'dolar_realbr', '0.2.0'
 ```
 
 And then execute:
