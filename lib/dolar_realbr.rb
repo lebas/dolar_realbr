@@ -16,9 +16,8 @@ module DolarRealbr
       unless day.nil?
         dt = DateTime.new(day[6,4].to_i, day[3,2].to_i, day[0,2].to_i)
         dt =  dt.prev_day while dt.sunday? or dt.saturday?
-        day = "#{dt.day.to_s.rjust(2,'0')}/#{dt.month.to_s.rjust(2,'0')}/#{dt.year}"
+        @day = "#{dt.day.to_s.rjust(2,'0')}/#{dt.month.to_s.rjust(2,'0')}/#{dt.year}"
       end 
-      day
     end
 
   	# params {currency:  'dollar', type:  'buy', date: 'DD/MM/YYYY'}
@@ -37,7 +36,7 @@ module DolarRealbr
 		 				@value = xml_file.css('valor').text.gsub(',','.').to_f
 	 				end
   			else
-          @day = self.check_date(params[:date])
+          self.check_date(params[:date])
   				op = get_value_error(day)
   				@value = op.body.to_h[:multi_ref].to_f if op.class == Savon::Response
   			end
