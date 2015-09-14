@@ -37,7 +37,7 @@ module DolarRealbr
 	 				end
   			else
           self.check_date(params[:date])
-  				op = get_value_error(day)
+  				op = get_value_error(@day)
   				@value = op.body.to_h[:multi_ref].to_f if op.class == Savon::Response
   			end
   		end
