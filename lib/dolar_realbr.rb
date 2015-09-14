@@ -21,7 +21,7 @@ module DolarRealbr
       day
     end
 
-  	# params {:currency =>  'dollar', :type =>  'buy', :date => 'DD/MM/YYYY'}
+  	# params {currency:  'dollar', type:  'buy', date: 'DD/MM/YYYY'}
   	def value_currency2realBR(params)
   		@code = @CC.fetch("#{params[:type]}").fetch("#{params[:currency]}") if @CC.key?("#{params[:type]}") && @CC["#{params[:type]}"].key?("#{params[:currency]}")
   		unless @cli.nil? or @code.nil?
@@ -37,7 +37,7 @@ module DolarRealbr
 		 				@value = xml_file.css('valor').text.gsub(',','.').to_f
 	 				end
   			else
-          day = self.check_date(params[:date])
+          @day = self.check_date(params[:date])
   				op = get_value_error(day)
   				@value = op.body.to_h[:multi_ref].to_f if op.class == Savon::Response
   			end
@@ -56,19 +56,19 @@ module DolarRealbr
       #erro na conexao
     end
 
-  	# params {:currency =>  'dolar', :type =>  'buy', :date => 'DD/MM/YYYY'}
+  	# params {currency:  'dollar', type:  'buy', date: 'DD/MM/YYYY'}
   	def value_realBR2currency(params)
   		self.value_currency2realBR(params)
   		@value = @value**(-1) unless @value.nil? or @value.zero?
 		end
 
-  	# params {:value => 1.00, :currency =>  'dolar', :type =>  'buy', :date => 'DD/MM/YYYY'}
+  	# params {value: 1.00, currency:  'dollar', type:  'buy', date: 'DD/MM/YYYY'}
   	def convert_currency2realBR(params)
   		self.value_currency2realBR(params)
   		@value *= params[:value].to_f unless @value.nil? or params[:value].nil?
   	end
 
-  	# params {:value => 1.00, :currency =>  'dolar', :type =>  'buy', :date => 'DD/MM/YYYY'}
+  	# params {value: 1.00, currency:  'dollar', type:  'buy', date: 'DD/MM/YYYY'}
   	def convert_realBR2currency(params)
   		self.value_currency2realBR(params)
   		@value = params[:value].to_f/@value unless @value.nil? or params[:value].nil? or @value == 0

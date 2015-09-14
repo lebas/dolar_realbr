@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Eduardo Alencar"]
   spec.email         = ["lebas66@gmail.com"]
 
-  spec.summary       = %q{Conversão de moedas, dada uma determinada data, entre Dolar <-> Real e Euro <-> Real.}
-  spec.description   = %q{Conversão de moedas, dada uma determinada data, entre Dolar <-> Real e Euro <-> Real.}
+  spec.summary       = %q{Exchange rate Real ( Brazil ), entre Dolar <-> Real e Euro <-> Real.}
+  spec.description   = %q{Exchange rate Real ( Brazil ), entre Dolar <-> Real e Euro <-> Real.}
   spec.homepage      = "https://facebook.com/Solution4Mac"
   spec.license       = "MIT"
 

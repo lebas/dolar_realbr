@@ -17,6 +17,24 @@ And then execute:
     $ bundle
 
 
+## Function
+
+```ruby
+	value_currency2realBR({currency:  'dollar', type:  'buy', date: 'DD/MM/YYYY'})
+```
+
+```ruby
+  	value_realBR2currency({currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})
+```
+
+```ruby
+  	convert_currency2realBR({value: 1_000, currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})
+```	
+
+```ruby
+		convert_realBR2currency({value: 1.00, currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})  	
+```
+
 
 ## Usage
 
@@ -54,21 +72,23 @@ And then execute:
 cotacao sem data 
 
 ```ruby
-
+	dol.value_value_currency2realBR({currency:  'euro', type:  'sale', date: '08/08/2014'})
+	dol.get_value // get value 
+	dol.get_date  // get date
 ```
 
 cotacao com data
 
-
 ```ruby
-
+	dol.value_realBR2currency({currency:  'euro', type:  'sale', date: '08/08/2014'})
+	dol.get_value // get value 
+	dol.get_date  // get date
 ```
 
 conversao de valores sem data
 
-
 ```ruby
-	dol.convert_currency2realBR({:value => 100, :currency => 'dollar', :type => 'buy'})
+	dol.convert_currency2realBR({value: 100, currency: 'dollar', type: 'buy'})
 	dol.get_value // get value 
 	dol.get_date  // get date
 ```
@@ -76,7 +96,7 @@ conversao de valores sem data
 conversao de valores com data
 
 ```ruby
-	dol.convert_currency2realBR({:value => 100, :currency => 'dollar', :type => 'buy', :date => '10/08/2015'})
+	dol.convert_currency2realBR({value: 100, currency: 'dollar', type: 'buy', date: '10/08/2015'})
 	dol.get_value // get value
 	dol.get_date  // get date
 ```
