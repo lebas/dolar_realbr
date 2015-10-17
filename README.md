@@ -32,7 +32,7 @@ And then execute:
 ```	
 
 ```ruby
-		convert_realBR2currency({value: 1.00, currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})  	
+	convert_realBR2currency({value: 1.00, currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})  	
 ```
 
 
