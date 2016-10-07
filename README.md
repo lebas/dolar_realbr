@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'dolar_realbr', '0.1.0'
+gem 'dolar_realbr', '0.2.0'
 ```
 
 And then execute:
@@ -24,15 +24,15 @@ And then execute:
 ```
 
 ```ruby
-  	value_realBR2currency({currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})
+  value_realBR2currency({currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})
 ```
 
 ```ruby
-  	convert_currency2realBR({value: 1_000, currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})
+  convert_currency2realBR({value: 1_000, currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})
 ```	
 
 ```ruby
-		convert_realBR2currency({value: 1.00, currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})  	
+	convert_realBR2currency({value: 1.00, currency:  'dolar', type:  'buy', date: 'DD/MM/YYYY'})  	
 ```
 
 
